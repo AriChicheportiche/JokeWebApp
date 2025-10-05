@@ -14,6 +14,21 @@ JokeWebApp is an ASP.NET Core 8.0 MVC app that lets registered users create, bro
 - Entity Framework Core with the SQLite provider
 - ASP.NET Core Identity
 
+## Project Structure
+```
+JokeWebApp/
+├── Areas/Identity            # Identity UI area with Razor Pages
+├── Controllers/              # MVC and API controllers (Jokes, Home, JokesApi)
+├── Data/                     # EF Core DbContext and seed data
+├── Migrations/               # EF Core migrations history (SQLite)
+├── Models/                   # View models and entity classes (Joke, ErrorViewModel)
+├── Views/                    # Razor view files for MVC controllers
+├── wwwroot/                  # Static assets (css, js, lib)
+├── Program.cs                # App bootstrap & middleware configuration
+├── appsettings*.json         # Configuration files (connection strings, logging)
+└── JokeWebApp.csproj         # Project definition and NuGet packages
+```
+
 ## Prerequisites
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download)
 - (Optional) `sqlite3` command-line tools if you want to inspect the database file manually
@@ -73,6 +88,17 @@ When the app runs in the Development environment, Swagger is enabled automatical
 - Raw OpenAPI JSON: `https://localhost:{port}/swagger/v1/swagger.json`
 
 If you deploy to another environment and want Swagger available there, add `app.UseSwagger()` and `app.UseSwaggerUI()` to the non-development branch in `Program.cs`.
+
+### REST API Endpoints
+Swagger exposes CRUD endpoints under `JokesApi` for the jokes catalogue:
+
+- `GET /api/JokesApi` – list all jokes
+- `GET /api/JokesApi/{id}` – fetch a single joke by id
+- `POST /api/JokesApi` – create a new joke
+- `PUT /api/JokesApi/{id}` – update an existing joke (payload id must match the route id)
+- `DELETE /api/JokesApi/{id}` – remove a joke
+
+Use the Swagger UI "Try it out" buttons to send requests. The seeded jokes are inserted automatically on first launch, making it easy to test immediately. When making `POST`/`PUT` calls, provide JSON bodies matching the `Joke` schema (e.g., `{"jokeQuestion": "...", "jokeAnswer": "..."}`).
 
 ## Deployment
 1. **Publish** for your target environment:

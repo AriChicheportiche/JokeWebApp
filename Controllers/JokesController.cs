@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JokeWebApp.Data;
 using JokeWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JokeWebApp.Controllers
 {
@@ -56,6 +57,7 @@ namespace JokeWebApp.Controllers
         }
 
         // GET: Jokes/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
