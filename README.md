@@ -16,17 +16,52 @@ JokeWebApp is an ASP.NET Core 8.0 MVC app that lets registered users create, bro
 
 ## Project Structure
 ```
-JokeWebApp/
-├── Areas/Identity            # Identity UI area with Razor Pages
-├── Controllers/              # MVC and API controllers (Jokes, Home, JokesApi)
-├── Data/                     # EF Core DbContext and seed data
-├── Migrations/               # EF Core migrations history (SQLite)
-├── Models/                   # View models and entity classes (Joke, ErrorViewModel)
-├── Views/                    # Razor view files for MVC controllers
-├── wwwroot/                  # Static assets (css, js, lib)
-├── Program.cs                # App bootstrap & middleware configuration
-├── appsettings*.json         # Configuration files (connection strings, logging)
-└── JokeWebApp.csproj         # Project definition and NuGet packages
+JokeWebApp
+├── Areas
+│   └── Identity
+│       └── Pages/             # Identity Razor Pages
+├── Controllers
+│   ├── Api/
+│   │   └── JokesApiController.cs
+│   ├── HomeController.cs
+│   └── JokesController.cs
+├── Data
+│   ├── ApplicationDbContext.cs
+│   └── SeedData.cs            # Seeds starter jokes
+├── Migrations
+│   ├── 20251005185343_InitialCreate.cs
+│   ├── 20251005185343_InitialCreate.Designer.cs
+│   └── ApplicationDbContextModelSnapshot.cs
+├── Models
+│   ├── ErrorViewModel.cs
+│   └── Joke.cs
+├── Views
+│   ├── Home/
+│   │   ├── Index.cshtml
+│   │   └── Privacy.cshtml
+│   ├── Jokes/
+│   │   ├── Create.cshtml
+│   │   ├── Delete.cshtml
+│   │   ├── Details.cshtml
+│   │   ├── Edit.cshtml
+│   │   ├── Index.cshtml
+│   │   └── ShowSearchForm.cshtml
+│   ├── Shared/
+│   │   ├── _Layout.cshtml
+│   │   ├── _Layout.cshtml.css
+│   │   ├── _LoginPartial.cshtml
+│   │   ├── _ValidationScriptsPartial.cshtml
+│   │   └── Error.cshtml
+│   ├── _ViewImports.cshtml
+│   └── _ViewStart.cshtml
+├── wwwroot
+│   ├── css/site.css
+│   ├── js/site.js
+│   └── lib/                # Bundled frontend libraries (bootstrap, jquery, validation)
+├── Program.cs             # App bootstrap & middleware configuration
+├── appsettings.json       # Base configuration (SQLite connection)
+├── appsettings.Development.json
+└── JokeWebApp.csproj      # Project definition and NuGet packages
 ```
 
 ## Prerequisites
